@@ -77,6 +77,6 @@ public class GraphMain21 {
             }
         } while (pil != 0);
         
-        scanner.close();
+        scanner.close(); 
     }
 }

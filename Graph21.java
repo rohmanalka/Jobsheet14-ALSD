@@ -1,6 +1,7 @@
 public class Graph21 {
     int vertex;
     DoubleLinkedList21 list[];
+    int matriks[][];
 
     public Graph21(int v) {
         vertex = v;
@@ -62,55 +63,52 @@ public class Graph21 {
         System.out.println("");
     }
 
-//     public int inDegree(int node) {
-//         int inDegreeCount = 0;
-//         for (int i = 0; i < vertex; i++) {
-//             if (matriks[i][node] != 0) {
-//                 inDegreeCount++;
-//             }
-//         }
-//         return inDegreeCount;
-//     }
+    public boolean isAdjacent(int asal, int tujuan) {
+        for (int i = 0; i < list[asal].size(); i++) {
+            try {
+                if (list[asal].get(i) == tujuan) {
+                    return true;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    public int inDegree(int node) {
+        int inDegreeCount = 0;
+        for (int i = 0; i < vertex; i++) {
+            if (matriks[i][node] != 0) {
+                inDegreeCount++;
+            }
+        }
+        return inDegreeCount;
+    }
     
-//     public int outDegree(int node) {
-//         int outDegreeCount = 0;
-//         for (int j = 0; j < vertex; j++) {
-//             if (matriks[node][j] != 0) {
-//                 outDegreeCount++;
-//             }
-//         }
-//         return outDegreeCount;
-//     }
-    
+    public int outDegree(int node) {
+        int outDegreeCount = 0;
+        for (int j = 0; j < vertex; j++) {
+            if (matriks[node][j] != 0) {
+                outDegreeCount++;
+            }
+        }
+        return outDegreeCount;
+    }
 
-//     public boolean isAdjacent(int asal, int tujuan) {
-//         for (int i = 0; i < list[asal].size(); i++) {
-//             try {
-//                 if (list[asal].get(i) == tujuan) {
-//                     return true;
-//                 }
-//             } catch (Exception e) {
-//                 e.printStackTrace();
-//             }
-//         }
-//         return false;
-//     }
+    public void updateJarak(int asal, int tujuan, int jarakBaru) {
+        matriks[asal][tujuan] = jarakBaru;
+    }
 
-
-// public void updateJarak(int asal, int tujuan, int jarakBaru) {
-//     matriks[asal][tujuan] = jarakBaru;
-// }
-
-// public int hitungEdge() {
-//     int edgeCount = 0;
-//     for (int i = 0; i < vertex; i++) {
-//         for (int j = 0; j < vertex; j++) {
-//             if (matriks[i][j] != 0) {
-//                 edgeCount++;
-//             }
-//         }
-//     }
-//     return edgeCount;
-// }
-
+    public int hitungEdge() {
+        int edgeCount = 0;
+        for (int i = 0; i < vertex; i++) {
+            for (int j = 0; j < vertex; j++) {
+                if (matriks[i][j] != 0) {
+                    edgeCount++;
+                }
+            }
+        }
+        return edgeCount;
+    }
 }
